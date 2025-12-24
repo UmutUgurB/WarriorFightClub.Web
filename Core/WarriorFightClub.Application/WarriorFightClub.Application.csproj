@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Blogs\Commands\" />
+    <Folder Include="Features\Blogs\Queries\" />
+    <Folder Include="Features\Contacts\" />
+    <Folder Include="Features\Categories\" />
+    <Folder Include="Features\Packages\Commands\RemovePackage\" />
+    <Folder Include="Features\Testimonials\Queries\GetTestimonialById\" />
+    <Folder Include="Features\Trainers\" />
+    <Folder Include="Validations\TestimonialValidator\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="16.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+    <PackageReference Include="MediatR" Version="14.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WarriorFightClub.Domain\WarriorFightClub.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
