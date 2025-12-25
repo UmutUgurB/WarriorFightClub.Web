@@ -7,10 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Blogs\Commands\" />
-    <Folder Include="Features\Blogs\Queries\" />
     <Folder Include="Features\Contacts\" />
-    <Folder Include="Features\Categories\" />
     <Folder Include="Features\Packages\Commands\RemovePackage\" />
   </ItemGroup>
 

@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewData["Title"] = "Hakkımızda";
+}
+
+@await Component.InvokeAsync("AboutSection")
+
+@await Component.InvokeAsync("TestimonialsSection", new { take = 6 })
+@await Component.InvokeAsync("PackagesSection", new { take = 3 })

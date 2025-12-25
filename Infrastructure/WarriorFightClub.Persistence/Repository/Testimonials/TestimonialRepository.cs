@@ -15,8 +15,8 @@ namespace WarriorFightClub.Persistence.Repository.Testimonials
         public async Task<PagedResult<Testimonial>> GetPagedAsync(int page, int pageSize, bool? isShown, CancellationToken ct = default)
         {
             if(page< 1) page = 1;   
-            if(pageSize < 20) pageSize = 20;
-
+            if(pageSize < 1) pageSize = 20;
+            if (pageSize > 100) pageSize = 100;
             IQueryable<Testimonial> query = Table.AsNoTracking();
 
             if(isShown.HasValue)
@@ -28,7 +28,7 @@ namespace WarriorFightClub.Persistence.Repository.Testimonials
             var items = await query
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
-                .ToListAsync();
+                .ToListAsync(ct);
             return new PagedResult<Testimonial>
             {
                 Page = page,

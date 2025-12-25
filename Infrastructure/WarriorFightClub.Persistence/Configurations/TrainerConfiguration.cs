@@ -60,7 +60,7 @@ namespace WarriorFightClub.Persistence.Configurations
                 },
                 new Trainer
                 {
-                    Id = Guid.Parse("cccccccc-cccc-cccc-cccc-ccccccccccc2"),
+                    Id = Guid.Parse("cccccccc-ccfc-cccc-cccc-ccccccccccc2"),
                     Name = "Elif",
                     Surname = "Demir",
                     Description = "Pilates, mobilite ve postür düzeltme odaklı çalışmalar.",
@@ -71,7 +71,7 @@ namespace WarriorFightClub.Persistence.Configurations
                 },
                 new Trainer
                 {
-                    Id = Guid.Parse("cccccccc-cccc-cccc-cccc-ccccccccccc3"),
+                    Id = Guid.Parse("cccccccd-cccc-cccc-cccc-ccccccccccc3"),
                     Name = "Mert",
                     Surname = "Kaya",
                     Description = "Boks ve kickboks antrenörü, kondisyon odaklı programlar.",
@@ -82,7 +82,7 @@ namespace WarriorFightClub.Persistence.Configurations
                 },
                 new Trainer
                 {
-                    Id = Guid.Parse("cccccccc-cccc-cccc-cccc-ccccccccccc4"),
+                    Id = Guid.Parse("ccccccec-cccc-cccc-cccc-cccccaccccc4"),
                     Name = "Zeynep",
                     Surname = "Aydın",
                     Description = "Yeni başlayanlar için temel programlar ve beslenme danışmanlığı.",
@@ -93,7 +93,7 @@ namespace WarriorFightClub.Persistence.Configurations
                 },
                 new Trainer
                 {
-                    Id = Guid.Parse("cccccccc-cccc-cccc-cccc-ccccccccccc4"),
+                    Id = Guid.Parse("cccccccc-cccc-bccc-cccc-ccccccccccc4"),
                     Name = "Akif",
                     Surname = "Aydın",
                     Description = "Uzmanlar için temel programlar ve beslenme danışmanlığı.",

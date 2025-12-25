@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "Hizmetlerimiz";
+}
+
+<div class="sub-banner-section services-banner-section">
+    <section class="banner-section banner-section--gradient">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="banner-section-content">
+                        <h1 data-aos="fade-up">Hizmetlerimiz</h1>
+                        <div class="btn_wrapper">
+                            <span class="sub_home_span">Ana Sayfa</span>
+                            <span class="mx-2 text-white">-</span>
+                            <span class="sub_span">Hizmetlerimiz</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@await Component.InvokeAsync("ServicesList", new { page = 1, pageSize = 12, isActive = true })
+
+<style>
+
+    .services-banner-section {
+        background: transparent !important;
+        background-image: none !important;
+    }
+
+
+    .banner-section--gradient {
+        background: linear-gradient(180deg, #b30000 0%, #000000 100%) !important;
+        padding: 180px 0 100px 0;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        z-index: 1; 
+    }
+
+
+        .banner-section--gradient::before,
+        .banner-section--gradient::after {
+            pointer-events: none !important;
+        }
+
+    .banner-section-content h1,
+    .banner-section-content .sub_home_span,
+    .banner-section-content .sub_span {
+        color: #fff !important;
+    }
+
+
+    .banner-section-outer {
+        background: transparent !important;
+        background-image: none !important;
+        z-index: 1055 !important;
+    }
+
+    header {
+        background: transparent !important;
+    }
+
+    .navbar {
+        background: transparent !important;
+    }
+
+
+    .banner-section-content .btn_wrapper {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.22);
+        background: rgba(0,0,0,.18);
+        backdrop-filter: blur(6px);
+    }
+</style>

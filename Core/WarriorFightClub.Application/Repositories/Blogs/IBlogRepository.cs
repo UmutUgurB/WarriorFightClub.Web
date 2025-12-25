@@ -12,5 +12,10 @@ namespace WarriorFightClub.Application.Repositories.Blogs
         Guid? categoryId,
         BlogStatus? status,
         CancellationToken ct = default);
+        Task<Blog?> GetByIdWithCategoryAsync(Guid id, CancellationToken ct = default);
+
+        Task<int> ReassignCategoryAsync(Guid fromCategoryId, Guid toCategoryId, CancellationToken ct = default);
+
+
     }
 }

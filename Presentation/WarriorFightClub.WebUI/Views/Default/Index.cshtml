@@ -117,3 +117,7 @@
         </div>
     </div>
 </section>
+
+@await Component.InvokeAsync("HomeServices", new { take = 4 })
+@await Component.InvokeAsync("TestimonialsSection", new { take = 6 })
+@await Component.InvokeAsync("PackagesSection", new { take = 3 })

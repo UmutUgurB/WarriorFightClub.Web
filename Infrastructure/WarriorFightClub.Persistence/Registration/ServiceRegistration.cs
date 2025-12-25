@@ -15,6 +15,7 @@ using WarriorFightClub.Persistence.Repository;
 using WarriorFightClub.Persistence.Repository.Abouts;
 using WarriorFightClub.Persistence.Repository.Banners;
 using WarriorFightClub.Persistence.Repository.Blogs;
+using WarriorFightClub.Persistence.Repository.Categories;
 using WarriorFightClub.Persistence.Repository.Packages;
 using WarriorFightClub.Persistence.Repository.Services;
 using WarriorFightClub.Persistence.Repository.Testimonials;
@@ -39,6 +40,7 @@ namespace WarriorFightClub.Persistence.Registration
             service.AddScoped<IServiceRepository, ServiceRepository>();
             service.AddScoped<ITestimonialRepository, TestimonialRepository>();
             service.AddScoped<ITrainerRepository,TrainerRepository>();  
+            service.AddScoped<ICategoryRepository,CategoryRepository>();  
             return service;
         }
     }

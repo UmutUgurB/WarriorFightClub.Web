@@ -23,7 +23,7 @@ namespace WarriorFightClub.Persistence.Repository.Services
         public async Task<PagedResult<Service>> GetPagedAsync(int page, int pageSize, bool? isActive, CancellationToken ct = default)
         {
             if(page < 1) page = 1;
-            if(pageSize < 20) pageSize = 20;
+            if(pageSize < 1) pageSize = 20;
 
             IQueryable<Service> query = Table.AsNoTracking();   
 

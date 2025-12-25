@@ -1,0 +1,165 @@
+﻿@using WarriorFightClub.WebUI.ApiDtos
+@model AboutDto?
+
+<div class="sub-banner-section about-banner-section">
+
+
+    <section class="banner-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="banner-section-content">
+                        <h1 data-aos="fade-up">Hakkımızda</h1>
+                        <div class="btn_wrapper">
+                            <span class="sub_home_span">Ana Sayfa</span>
+                            <span class="mx-2 text-white">-</span>
+                            <span class="sub_span">Hakkımızda</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<section class="about-section">
+    <div class="container">
+        @if (Model is null)
+        {
+            <div class="row">
+                <div class="col-12">
+                    <p>Şu anda görüntülenecek bir “Hakkımızda” içeriği bulunamadı.</p>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+                    <div class="about-image-wrap">
+                        <img src="@Model.ImageUrl" alt="@Model.Title" class="img-fluid about-image" />
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12">
+                    <div class="about-content">
+                        <h5 class="about-kicker">HAKKIMIZDA</h5>
+                        <h2 class="about-title">@Model.Title</h2>
+                        <p class="about-subtitle">@Model.SubTitle</p>
+                        <p class="about-desc">@Model.Description</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<style>
+    /* KAPSAYICI */
+    .sub-banner-section {
+        position: relative;
+        width: 100%;
+    }
+
+    /* ✅ HEADER: her şeyin üstünde + tıklanabilir */
+    .subpage-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1055; /* Bootstrap üstü */
+        background: transparent;
+        padding-top: 15px;
+        pointer-events: auto; /* garanti */
+    }
+
+        .subpage-header * {
+            pointer-events: auto; /* garanti */
+        }
+
+        /* Menü */
+        .subpage-header .navbar {
+            background: transparent !important;
+        }
+
+        .subpage-header .nav-link,
+        .subpage-header .navbar-brand {
+            color: #fff !important;
+            cursor: pointer;
+        }
+
+    /* ✅ Banner (arka plan katmanı) */
+    .banner-section {
+        background: linear-gradient(180deg, #b30000 0%, #000000 100%);
+        padding: 180px 0 100px 0;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        /* z-index'i düşük tutuyoruz */
+        z-index: 1;
+    }
+
+        /* ✅ Temalarda sık olan overlayler tıklamayı bozmasın */
+        .banner-section::before,
+        .banner-section::after {
+            pointer-events: none !important;
+        }
+
+    .banner-section-content h1,
+    .banner-section-content .sub_home_span,
+    .banner-section-content .sub_span {
+        color: #ffffff;
+    }
+
+    .sub_home_span {
+        opacity: 0.85;
+    }
+
+    /* ABOUT içerik */
+    .about-section {
+        padding: 80px 0;
+        background-color: #ffffff;
+    }
+
+    .about-kicker {
+        letter-spacing: .12em;
+        font-weight: 700;
+        color: #b30000;
+        margin-bottom: 12px;
+    }
+
+    .about-title {
+        font-size: 40px;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 14px;
+        color: #000;
+    }
+
+    .about-subtitle {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 14px;
+        color: #333;
+    }
+
+    .about-desc {
+        font-size: 16px;
+        line-height: 1.75;
+        color: #555;
+    }
+
+    .about-image-wrap {
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .about-image {
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+        display: block;
+    }
+</style>

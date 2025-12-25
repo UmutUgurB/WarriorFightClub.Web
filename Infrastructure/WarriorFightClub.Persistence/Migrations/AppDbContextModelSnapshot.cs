@@ -62,6 +62,18 @@ namespace WarriorFightClub.Persistence.Migrations
                         .HasFilter("[IsActive] = 1");
 
                     b.ToTable("Abouts", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d"),
+                            CreatedDate = new DateTime(2025, 12, 25, 10, 53, 40, 264, DateTimeKind.Utc).AddTicks(1183),
+                            Description = "Warrior Fight Club, modern dövüş sanatları tekniklerini profesyonel eğitmenler eşliğinde sunan, disiplin ve gücü odak noktasına alan bir spor salonudur. Burada sadece vücudunuzu değil, iradenizi de eğitiyoruz.",
+                            ImageUrl = "https://lh5.googleusercontent.com/proxy/stFBPjVPFdJzQCb1Rbb2XU4MlsoM522iD7cVRBVpH-8Kj7VcmKxBMK03tHVqPifTmqL64p62CiJMduxyH3aEtX06Kp_9MppCXE3uUK2dcDVNRlvy-EsPRp9i62bmhYIJzcbVd24",
+                            IsActive = true,
+                            SubTitle = "Sınırlarını Zorlamaya Hazır Mısın?",
+                            Title = "Warrior Fight Club"
+                        });
                 });
 
             modelBuilder.Entity("WarriorFightClub.Domain.Entities.Banner", b =>
@@ -155,24 +167,88 @@ namespace WarriorFightClub.Persistence.Migrations
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasMaxLength(600)
+                        .HasColumnType("nvarchar(600)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("CreatedDate");
+
                     b.HasIndex("Status");
 
                     b.ToTable("Blogs", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("7c5d6c0d-6b03-4a90-a82e-3cefb2df0e3a"),
+                            CategoryId = new Guid("b4a4f2c6-6c55-4c45-8a16-2f3b6c0d1a11"),
+                            CreatedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Squat, push-up, row, plank ve deadlift ile temel bir başlangıç planı.",
+                            ImageUrl = "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200",
+                            Status = 1,
+                            Title = "Yeni Başlayanlar İçin 5 Temel Hareket"
+                        },
+                        new
+                        {
+                            Id = new Guid("b62f8d9d-4b17-4b2a-90e8-3f13f6a8d3e1"),
+                            CategoryId = new Guid("b4a4f2c6-6c55-4c45-8a16-2f3b6c0d1a11"),
+                            CreatedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Interval, tempo koşu ve düzenli takip ile kondisyon geliştirme.",
+                            ImageUrl = "https://images.unsplash.com/photo-1554284126-aa88f22d8b74?w=1200",
+                            Status = 1,
+                            Title = "Kondisyonu Artırmanın 3 Yolu"
+                        },
+                        new
+                        {
+                            Id = new Guid("c1d6a6d3-9c2d-4c4f-9a89-8c90a4c5afaa"),
+                            CategoryId = new Guid("c9c1a2b0-7a26-4b2f-9b4c-1f0a2d7a3b22"),
+                            CreatedDate = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Doğru guard pozisyonu, mesafe ve zamanlama ipuçları.",
+                            ImageUrl = "https://images.unsplash.com/photo-1517438984742-1262db08379e?w=1200",
+                            Status = 1,
+                            Title = "Boks’ta Guard ve Mesafe Kontrolü"
+                        },
+                        new
+                        {
+                            Id = new Guid("f7a11f8a-3a7a-4df8-9b3d-5f4b3a9f1b22"),
+                            CategoryId = new Guid("c9c1a2b0-7a26-4b2f-9b4c-1f0a2d7a3b22"),
+                            CreatedDate = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "1-2-low kick ve basic kombinasyon setleri.",
+                            ImageUrl = "https://images.unsplash.com/photo-1549476464-37392f717541?w=1200",
+                            Status = 0,
+                            Title = "Kickboks’ta Kombinasyonlar"
+                        },
+                        new
+                        {
+                            Id = new Guid("0f3a2d7a-1b3c-4a61-8f9a-2f3b2f3c7d2f"),
+                            CategoryId = new Guid("0d9aa7a6-1bd6-46d2-9a8e-87e4d9b9c5b1"),
+                            CreatedDate = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Kas onarımı, toparlanma ve günlük protein hedefi.",
+                            ImageUrl = "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1200",
+                            Status = 1,
+                            Title = "Protein Nedir? Ne Zaman Tüketilmeli?"
+                        },
+                        new
+                        {
+                            Id = new Guid("2f3b2f3c-7d2f-4a61-8f9a-0f3a2d7a1b3c"),
+                            CategoryId = new Guid("0d9aa7a6-1bd6-46d2-9a8e-87e4d9b9c5b1"),
+                            CreatedDate = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Kalori dengesi, protein önceliği ve sürdürülebilir alışkanlıklar.",
+                            ImageUrl = "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200",
+                            Status = 0,
+                            Title = "Yağ Yakımı İçin Basit Beslenme Prensipleri"
+                        });
                 });
 
             modelBuilder.Entity("WarriorFightClub.Domain.Entities.Category", b =>
@@ -186,7 +262,8 @@ namespace WarriorFightClub.Persistence.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -195,9 +272,34 @@ namespace WarriorFightClub.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CreatedDate");
+
                     b.HasIndex("Title");
 
                     b.ToTable("Categories", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("b4a4f2c6-6c55-4c45-8a16-2f3b6c0d1a11"),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Kuvvet, kondisyon ve genel fitness içerikleri.",
+                            Title = "Fitness"
+                        },
+                        new
+                        {
+                            Id = new Guid("c9c1a2b0-7a26-4b2f-9b4c-1f0a2d7a3b22"),
+                            CreatedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Boks, kickboks ve teknik içerikler.",
+                            Title = "Dövüş Sporları"
+                        },
+                        new
+                        {
+                            Id = new Guid("0d9aa7a6-1bd6-46d2-9a8e-87e4d9b9c5b1"),
+                            CreatedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Sağlıklı beslenme ve yaşam tarzı.",
+                            Title = "Beslenme"
+                        });
                 });
 
             modelBuilder.Entity("WarriorFightClub.Domain.Entities.Contact", b =>
@@ -249,20 +351,68 @@ namespace WarriorFightClub.Persistence.Migrations
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Title");
+                    b.HasIndex("CreatedDate");
+
+                    b.HasIndex("IsActive");
 
                     b.ToTable("Packages", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbb1"),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Spora yeni başlayanlar için temel program ve takip.",
+                            Features = "Haftada 3 gün program; Ölçüm takibi; Salon kullanımı",
+                            ImageUrl = "https://www.macfit.com/wp-content/uploads/2022/11/fitness-salonlari-1024x683.jpg",
+                            IsActive = true,
+                            Title = "Başlangıç Paketi"
+                        },
+                        new
+                        {
+                            Id = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbb2"),
+                            CreatedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Gelişmiş program + daha sık takip ve danışmanlık.",
+                            Features = "Haftada 5 gün program; Beslenme önerisi; Aylık ölçüm",
+                            ImageUrl = "https://www.sportsuniverse.com.tr/wp-content/uploads/2020/06/905A8B53-D0A3-45E3-8CDF-3AA4A5B9C24F.jpeg",
+                            IsActive = true,
+                            Title = "Pro Paket"
+                        },
+                        new
+                        {
+                            Id = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbb3"),
+                            CreatedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Antrenör ile bire bir çalışma ve maksimum verim.",
+                            Features = "Bire bir seans; Program planlama; Haftalık takip",
+                            ImageUrl = "https://media.istockphoto.com/id/2075354173/tr/foto%C4%9Fraf/fitness-couple-is-doing-kettlebell-twist-in-a-gym-togehter.jpg?s=612x612&w=0&k=20&c=GibU8-6Ydswl3qjVPJ8FIx8c7_15aYf-rw0wg85M_oo=",
+                            IsActive = true,
+                            Title = "PT (Bire Bir) Paketi"
+                        },
+                        new
+                        {
+                            Id = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbb4"),
+                            CreatedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Şirket çalışanlarına özel toplu üyelik ve avantajlar.",
+                            Features = "Toplu üyelik indirimi; Kurumsal raporlama; Esnek plan",
+                            ImageUrl = "https://nutrade.com.tr/cdn/shop/articles/Fitness-ile-Ilgili-Bilinmesi-Gerekenler.jpg?v=1701794880",
+                            IsActive = false,
+                            Title = "Kurumsal Paket"
+                        });
                 });
 
             modelBuilder.Entity("WarriorFightClub.Domain.Entities.Service", b =>
@@ -300,6 +450,62 @@ namespace WarriorFightClub.Persistence.Migrations
                     b.HasIndex("IsActive");
 
                     b.ToTable("Services", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("aaaaaaaa-abaa-aaaa-aaaa-aaaaaaaaaaa1"),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Hedeflerinize uygun, bire bir antrenman planı ve takip.",
+                            ImageUrl = "https://images.squarespace-cdn.com/content/v1/5ede457a2188e55de5de09a7/1591889835496-GPGGP2ZIRL0V41HKKOGH/The+Benefits+Of+Personal+Training+At+Home.jpg",
+                            IsActive = true,
+                            Title = "Kişisel Antrenman"
+                        },
+                        new
+                        {
+                            Id = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaacaaaaaa2"),
+                            CreatedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Dayanıklılık, kuvvet ve hareket kabiliyetini artıran programlar.",
+                            ImageUrl = "https://www.skechers.com.tr/blog/wp-content/uploads/2023/03/fitnes.jpg",
+                            IsActive = true,
+                            Title = "Fonksiyonel Antrenman"
+                        },
+                        new
+                        {
+                            Id = new Guid("aaaaaaaa-aaaa-aafa-aaaa-aaaaaaaaaaa3"),
+                            CreatedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Teknik gelişim + kondisyon odaklı dövüş sporları antrenmanları.",
+                            ImageUrl = "https://img2.storyblok.com/690x690/filters:focal(null):format(png)/f/115220/1100x1100/f1f74de82a/mitt_work.png",
+                            IsActive = true,
+                            Title = "Boks & Kickboks"
+                        },
+                        new
+                        {
+                            Id = new Guid("aaacaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa4"),
+                            CreatedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Uzaktan program, beslenme önerileri ve düzenli kontrol.",
+                            ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqAiIpZh7QAtitPhv_6kLZPftvIU1_G3lbRg&s",
+                            IsActive = false,
+                            Title = "Online Koçluk"
+                        },
+                        new
+                        {
+                            Id = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaeaaaaa4"),
+                            CreatedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Uzaktan program, beslenme önerileri ve düzenli kontrol.",
+                            ImageUrl = "https://images.squarespace-cdn.com/content/v1/60b770454e1e5542857bb262/1694527499153-QZ4BDA3SIN9L5AICSB34/ukactive-Swimming-lessons-lost-in-lockdown.jpg",
+                            IsActive = false,
+                            Title = "Yüzme Dersleri"
+                        },
+                        new
+                        {
+                            Id = new Guid("aaaafaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa4"),
+                            CreatedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Uzaktan program, beslenme önerileri ve düzenli kontrol.",
+                            ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxl96SR5NMdDrgO2O2wkRFmlfUPrYTobwBzA&s",
+                            IsActive = false,
+                            Title = "Pilates"
+                        });
                 });
 
             modelBuilder.Entity("WarriorFightClub.Domain.Entities.Testimonial", b =>
@@ -403,6 +609,61 @@ namespace WarriorFightClub.Persistence.Migrations
                     b.HasIndex("IsActive");
 
                     b.ToTable("Trainers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("cccccccc-cccc-cccc-cccc-ccccccccccc1"),
+                            BirthDate = new DateTime(1992, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Fonksiyonel antrenman ve kuvvet geliştirme uzmanı.",
+                            ImageUrl = "https://hips.hearstapps.com/hmg-prod/images/mh-trainer-2-1533576998.png?resize=640:*",
+                            IsActive = true,
+                            Name = "Ahmet",
+                            Surname = "Yılmaz"
+                        },
+                        new
+                        {
+                            Id = new Guid("cccccccc-ccfc-cccc-cccc-ccccccccccc2"),
+                            BirthDate = new DateTime(1995, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Pilates, mobilite ve postür düzeltme odaklı çalışmalar.",
+                            ImageUrl = "https://www.shutterstock.com/shutterstock/photos/1583397034/display_1500/stock-photo-young-female-fitness-personal-trainer-with-notepad-standing-in-the-gym-with-thumb-up-1583397034.jpg",
+                            IsActive = true,
+                            Name = "Elif",
+                            Surname = "Demir"
+                        },
+                        new
+                        {
+                            Id = new Guid("cccccccd-cccc-cccc-cccc-ccccccccccc3"),
+                            BirthDate = new DateTime(1990, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Boks ve kickboks antrenörü, kondisyon odaklı programlar.",
+                            ImageUrl = "https://images.ctfassets.net/qw8ps43tg2ux/1LPfI8kPATAzojZMBalhli/7dbdddba786444110a762b75977a8fd8/how-it-works-issa-certified-personal-trainer.webp?fm=webp&w=1440&q=75",
+                            IsActive = true,
+                            Name = "Mert",
+                            Surname = "Kaya"
+                        },
+                        new
+                        {
+                            Id = new Guid("ccccccec-cccc-cccc-cccc-cccccaccccc4"),
+                            CreatedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Yeni başlayanlar için temel programlar ve beslenme danışmanlığı.",
+                            ImageUrl = "https://ici.net.au/blog/wp-content/uploads/2019/04/BecomePersonalTrainer-1024x683.jpg",
+                            IsActive = false,
+                            Name = "Zeynep",
+                            Surname = "Aydın"
+                        },
+                        new
+                        {
+                            Id = new Guid("cccccccc-cccc-bccc-cccc-ccccccccccc4"),
+                            CreatedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Uzmanlar için temel programlar ve beslenme danışmanlığı.",
+                            ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStzFOrI0wwFupHIFL7p0lU3Brr9MaQv70MrQ&s",
+                            IsActive = false,
+                            Name = "Akif",
+                            Surname = "Aydın"
+                        });
                 });
 
             modelBuilder.Entity("WarriorFightClub.Domain.Entities.Blog", b =>

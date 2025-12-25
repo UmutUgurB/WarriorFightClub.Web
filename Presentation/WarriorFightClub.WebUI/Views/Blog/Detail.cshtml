@@ -1,0 +1,322 @@
+﻿@using WarriorFightClub.WebUI.ApiDtos
+@model BlogDto
+
+@{
+    ViewData["Title"] = Model?.Title ?? "Blog Detay";
+}
+
+<!-- HERO / BANNER -->
+<div class="sub-banner-section blog-detail-banner">
+    <section class="banner-section banner-section--gradient">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="banner-section-content">
+                        <h1 data-aos="fade-up">@Model.Title</h1>
+
+                        <div class="meta-row">
+                            <span class="chip">@Model.CategoryTitle</span>
+                            <span class="dot">•</span>
+                            <span class="date">@Model.CreatedDate.ToString("dd.MM.yyyy")</span>
+                        </div>
+
+                        <div class="btn_wrapper mt-3">
+                            <a class="crumb" asp-controller="Default" asp-action="Index">Ana Sayfa</a>
+                            <span class="mx-2 text-white">-</span>
+                            <a class="crumb" asp-controller="Blog" asp-action="Index">Bloglarımız</a>
+                            <span class="mx-2 text-white">-</span>
+                            <span class="crumb active">Detay</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- CONTENT -->
+<section class="blog-detail">
+    <div class="container">
+        <div class="row">
+
+            <!-- MAIN -->
+            <div class="col-lg-8 mb-4 mb-lg-0">
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="@Model.ImageUrl" alt="@Model.Title" />
+                    </div>
+
+                    <div class="article-body">
+                        <p class="lead">
+                            @(Model.Description?.Length > 180 ? Model.Description.Substring(0, 180) + "..." : Model.Description)
+                        </p>
+
+                        <div class="content">
+                            <p>@Model.Description</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CTA BAND -->
+                <div class="cta-band">
+                    <div>
+                        <h4>Ücretsiz deneme dersi için hemen iletişime geçin</h4>
+                        <p>Size en uygun programı birlikte planlayalım.</p>
+                    </div>
+                    <div class="cta-actions">
+                        <a class="cta-btn" asp-controller="Contact" asp-action="Index">İletişim</a>
+                        <a class="cta-btn ghost" href="tel:+905555555555">Ara</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="col-lg-4">
+                <aside class="sidebar">
+
+                    <div class="side-card">
+                        <h5>Kategoriler</h5>
+                        <div class="mini-note">
+                            Buraya kategori filtre component’i ekleyebilirsin.
+                        </div>
+                    </div>
+
+                    <!-- ✅ SON 3 BLOG (ÇALIŞAN) -->
+                    @await Component.InvokeAsync("LatestBlogs", new { take = 3, excludeId = Model.Id })
+
+                    <div class="side-card accent">
+                        <h5>Programınızı Seçin</h5>
+                        <p>Paketlerimizi inceleyin ve size uygun olanı seçin.</p>
+                        <a class="side-btn" asp-controller="Package" asp-action="Index">Paketlerimiz</a>
+                    </div>
+
+                </aside>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Banner */
+    .blog-detail-banner {
+        background: transparent !important;
+    }
+
+    .banner-section--gradient {
+        background: linear-gradient(180deg, #b30000 0%, #000000 100%) !important;
+        padding: 180px 0 90px 0;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+        .banner-section--gradient::before,
+        .banner-section--gradient::after {
+            pointer-events: none !important;
+        }
+
+    .banner-section-content h1 {
+        color: #fff;
+        font-weight: 900;
+        line-height: 1.1;
+        font-size: clamp(28px, 3vw, 44px);
+        margin-bottom: 14px;
+    }
+
+    .meta-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        color: rgba(255,255,255,.78);
+        font-weight: 700;
+    }
+
+    .chip {
+        display: inline-flex;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(255,255,255,.10);
+        border: 1px solid rgba(255,255,255,.18);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 900;
+    }
+
+    .dot {
+        opacity: .6;
+    }
+
+    .date {
+        font-size: 12px;
+    }
+
+    .btn_wrapper {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.22);
+        background: rgba(0,0,0,.18);
+        backdrop-filter: blur(6px);
+    }
+
+    .crumb {
+        color: rgba(255,255,255,.85);
+        text-decoration: none !important;
+        font-weight: 800;
+    }
+
+        .crumb.active {
+            color: #fff;
+        }
+
+    /* ✅ PAGE: BEYAZ */
+    .blog-detail {
+        padding: 70px 0;
+        background: #ffffff;
+        color: #111;
+    }
+
+    .article-card {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+
+    .article-image {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: #f3f4f6;
+        overflow: hidden;
+    }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+    .article-body {
+        padding: 18px;
+    }
+
+    .lead {
+        color: #111;
+        font-size: 16px;
+        line-height: 1.8;
+        font-weight: 800;
+        margin-bottom: 12px;
+    }
+
+    .content p {
+        color: #374151;
+        line-height: 1.9;
+        font-size: 15px;
+        margin-bottom: 14px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .side-card {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 18px;
+        padding: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.06);
+    }
+
+        .side-card h5 {
+            margin: 0 0 10px 0;
+            font-weight: 900;
+            font-size: 16px;
+            color: #111;
+        }
+
+    .mini-note {
+        color: #6b7280;
+        font-size: 13px;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .side-card.accent {
+        border-color: rgba(179,0,0,.25);
+        background: rgba(179,0,0,.06);
+    }
+
+    .side-btn {
+        display: inline-flex;
+        margin-top: 10px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        background: #111;
+        border: 1px solid #111;
+        color: #fff;
+        font-weight: 900;
+        text-decoration: none !important;
+    }
+
+        .side-btn:hover {
+            opacity: .92;
+        }
+
+    /* CTA band */
+    .cta-band {
+        margin-top: 14px;
+        border-radius: 18px;
+        padding: 18px;
+        background: linear-gradient(135deg, rgba(179,0,0,.18), rgba(0,0,0,.04));
+        border: 1px solid rgba(179,0,0,.18);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+    }
+
+        .cta-band h4 {
+            margin: 0 0 6px 0;
+            font-weight: 900;
+            font-size: 18px;
+            color: #111;
+        }
+
+        .cta-band p {
+            margin: 0;
+            color: #4b5563;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+    .cta-actions {
+        display: flex;
+        gap: 10px;
+    }
+
+    .cta-btn {
+        display: inline-flex;
+        padding: 10px 14px;
+        border-radius: 12px;
+        background: #b30000;
+        border: 1px solid #b30000;
+        color: #fff;
+        font-weight: 900;
+        text-decoration: none !important;
+        white-space: nowrap;
+    }
+
+        .cta-btn.ghost {
+            background: #fff;
+            color: #111;
+            border: 1px solid #e5e7eb;
+        }
+</style>

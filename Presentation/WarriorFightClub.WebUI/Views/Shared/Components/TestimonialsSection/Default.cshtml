@@ -1,0 +1,179 @@
+﻿@using WarriorFightClub.WebUI.ApiDtos
+@model IReadOnlyList<TestimonialDto>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<section class="testimonials_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <span class="badge_text">DENEYİMLER</span>
+                <h2 class="display-5 fw-bold text_dark">Üyelerimizin Hikayeleri</h2>
+                <p class="text-muted">Warrior Fight Club ailesine katılanların gerçek görüşleri.</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            @if (Model is null || Model.Count == 0)
+            {
+                <div class="col-md-6 text-center py-5">
+                    <div class="empty_state">
+                        <i class="fa-regular fa-comment-dots mb-3"></i>
+                        <p>Henüz bir yorum paylaşılmamış.</p>
+                    </div>
+                </div>
+            }
+            else
+            {
+                @foreach (var t in Model)
+                {
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="premium_card">
+                            <div class="card_header">
+                                <div class="quote_box">
+                                    <i class="fa-solid fa-quote-right"></i>
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+
+                            <div class="card_body">
+                                <p class="testimonial_text">@t.Description</p>
+                            </div>
+
+                            <div class="card_footer">
+                                <div class="user_info">
+                                    <div class="user_avatar">
+                                        @t.Title.Substring(0, 1).ToUpper()
+                                    </div>
+                                    <h5 class="user_name">@t.Title</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .testimonials_section {
+        padding: 120px 0;
+        background-color: #ffffff; /* Saf Beyaz Arka Plan */
+        font-family: 'Inter', sans-serif;
+    }
+
+    .badge_text {
+        color: #ff4d4d;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .text_dark {
+        color: #1a1a1a;
+    }
+
+    /* Kart Tasarımı */
+    .premium_card {
+        background: #ffffff;
+        border: 1px solid #f0f0f0; /* Çok ince kenarlık */
+        border-radius: 24px;
+        padding: 35px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    }
+
+        .premium_card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            border-color: #ff4d4d;
+        }
+
+    .card_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .quote_box {
+        width: 45px;
+        height: 45px;
+        background: #fff5f5;
+        color: #ff4d4d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        font-size: 20px;
+    }
+
+    .stars {
+        color: #ffc107;
+        font-size: 12px;
+    }
+
+    .testimonial_text {
+        color: #4a4a4a;
+        font-size: 16px;
+        line-height: 1.8;
+        font-style: normal;
+        margin-bottom: 30px;
+        flex-grow: 1;
+    }
+
+    /* Alt Kısım ve Profil İkonu */
+    .card_footer {
+        border-top: 1px solid #f5f5f5;
+        padding-top: 20px;
+    }
+
+    .user_info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .user_avatar {
+        width: 40px;
+        height: 40px;
+        background: #1a1a1a;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .user_name {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 700;
+        color: #1a1a1a;
+    }
+
+    .empty_state {
+        color: #ccc;
+        font-size: 40px;
+    }
+
+        .empty_state p {
+            font-size: 16px;
+            color: #999;
+        }
+</style>

@@ -1,0 +1,138 @@
+﻿@using WarriorFightClub.WebUI.ApiDtos
+@model IReadOnlyList<BlogDto>
+
+<div class="side-card">
+    <h5>Son Bloglar</h5>
+
+    @if (Model is null || Model.Count == 0)
+    {
+        <p class="mini-note">Henüz blog yok.</p>
+    }
+    else
+    {
+        <ul class="latest-list">
+            @foreach (var b in Model)
+            {
+                <li class="latest-item">
+                    <a asp-controller="Blog" asp-action="Detail" asp-route-id="@b.Id" class="latest-link">
+                        <div class="thumb">
+                            <img src="@b.ImageUrl" alt="@b.Title" />
+                        </div>
+                        <div class="txt">
+                            <div class="t">@b.Title</div>
+                            <div class="m">
+                                <span class="chip">@b.CategoryTitle</span>
+                                <span class="date">@b.CreatedDate.ToString("dd.MM.yyyy")</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+</div>
+
+<style>
+    .side-card {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 18px;
+        padding: 16px;
+    }
+
+        .side-card h5 {
+            margin: 0 0 12px 0;
+            font-weight: 900;
+        }
+
+    .mini-note {
+        color: #6b7280;
+        margin: 0;
+    }
+
+    .latest-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .latest-item {
+        margin: 0;
+    }
+
+    .latest-link {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        text-decoration: none !important;
+        padding: 10px;
+        border-radius: 14px;
+        border: 1px solid #e5e7eb;
+        background: #f9fafb;
+        transition: .15s ease;
+    }
+
+        .latest-link:hover {
+            background: #f3f4f6;
+            transform: translateY(-1px);
+        }
+
+    .thumb {
+        width: 72px;
+        height: 54px;
+        border-radius: 10px;
+        overflow: hidden;
+        flex: 0 0 auto;
+        background: #e5e7eb;
+    }
+
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+    .txt {
+        min-width: 0;
+    }
+
+    .t {
+        font-weight: 900;
+        color: #111;
+        font-size: 13px;
+        line-height: 1.25;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .m {
+        margin-top: 6px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .chip {
+        display: inline-flex;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: rgba(179,0,0,.10);
+        border: 1px solid rgba(179,0,0,.25);
+        color: #b30000;
+        font-size: 11px;
+        font-weight: 900;
+    }
+
+    .date {
+        color: #6b7280;
+        font-size: 11px;
+        font-weight: 700;
+    }
+</style>

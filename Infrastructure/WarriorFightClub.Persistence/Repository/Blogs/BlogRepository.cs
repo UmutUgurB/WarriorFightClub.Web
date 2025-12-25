@@ -13,6 +13,13 @@ namespace WarriorFightClub.Persistence.Repository.Blogs
         {
         }
 
+        public Task<Blog?> GetByIdWithCategoryAsync(Guid id, CancellationToken ct = default)
+        {
+            return Table.AsNoTracking()
+                .Include(x => x.Category)   
+                .FirstOrDefaultAsync(x => x.Id == id,ct);  
+        }
+
         public async Task<PagedResult<Blog>> GetPagedWithCategoryAsync(
         int page,
         int pageSize,
@@ -50,6 +57,13 @@ namespace WarriorFightClub.Persistence.Repository.Blogs
                 TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize),
                 Items = items
             };
+        }
+
+        public Task<int> ReassignCategoryAsync(Guid fromCategoryId, Guid toCategoryId, CancellationToken ct = default)
+        {
+            return Table
+         .Where(x => x.CategoryId == fromCategoryId)
+         .ExecuteUpdateAsync(s => s.SetProperty(b => b.CategoryId, toCategoryId), ct);
         }
     }
 } 

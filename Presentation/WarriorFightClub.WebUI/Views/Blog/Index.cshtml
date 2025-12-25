@@ -1,0 +1,397 @@
+﻿@using WarriorFightClub.WebUI.ViewModels.Blog
+@model BlogIndexVm
+
+@{
+    ViewData["Title"] = "Bloglarımız";
+}
+
+<div class="sub-banner-section blogs-banner-section">
+    <section class="banner-section banner-section--gradient">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="banner-section-content">
+                        <h1 data-aos="fade-up">Bloglarımız</h1>
+                        <div class="btn_wrapper">
+                            <span class="sub_home_span">Ana Sayfa</span>
+                            <span class="mx-2 text-white">-</span>
+                            <span class="sub_span">Bloglarımız</span>
+                        </div>
+                        @if (!string.IsNullOrWhiteSpace(Model.CategoryTitle))
+                        {
+                            <div class="mt-3">
+                                <span class="badge badge-pill badge-light">Filtre: @Model.CategoryTitle</span>
+                                <a class="ml-2 text-white" asp-controller="Blog" asp-action="Index">Filtreyi kaldır</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<section class="blogs_section">
+    <div class="container">
+
+        <!-- KATEGORİ FİLTRE -->
+        <div class="category_bar">
+            <a class="cat_btn @(Model.CategoryId is null ? "active" : "")"
+               asp-controller="Blog" asp-action="Index" asp-route-page="1" asp-route-pageSize="@Model.Paged.PageSize">
+                Tümü
+            </a>
+
+            @foreach (var c in Model.Categories)
+            {
+                <a class="cat_btn @(Model.CategoryId == c.Id ? "active" : "")"
+                   asp-controller="Blog" asp-action="Index"
+                   asp-route-categoryId="@c.Id"
+                   asp-route-page="1"
+                   asp-route-pageSize="@Model.Paged.PageSize">
+                    @c.Title
+                </a>
+            }
+        </div>
+
+        <!-- BLOG LİSTESİ -->
+        @if (Model.Paged.Items is null || Model.Paged.Items.Count == 0)
+        {
+            <div class="empty_state">
+                Seçtiğiniz filtreye uygun blog bulunamadı.
+            </div>
+        }
+        else
+        {
+            <div class="row mt-4">
+                @foreach (var b in Model.Paged.Items)
+                {
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <article class="blog_card">
+                            <div class="blog_img">
+                                <img src="@b.ImageUrl" alt="@b.Title" />
+                            </div>
+
+                            <div class="blog_body">
+                                <div class="blog_meta">
+                                    <span class="chip">@b.CategoryTitle</span>
+                                    <span class="date">@b.CreatedDate.ToString("dd.MM.yyyy")</span>
+                                </div>
+
+                                <h3 class="blog_title">@b.Title</h3>
+
+                                <p class="blog_desc">
+                                    @(b.Description?.Length > 140 ? b.Description.Substring(0, 140) + "..." : b.Description)
+                                </p>
+
+                                <a class="read_more"
+                                   asp-controller="Blog" asp-action="Detail" asp-route-id="@b.Id">
+                                    Devamını Oku <i class="fa-solid fa-arrow-right-long"></i>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                }
+            </div>
+        }
+
+        <!-- PAGINATION -->
+        @if (Model.Paged.TotalPages > 1)
+        {
+            <div class="pager">
+                <a class="pager_btn @(Model.Paged.Page <= 1 ? "disabled" : "")"
+                   asp-controller="Blog" asp-action="Index"
+                   asp-route-categoryId="@Model.CategoryId"
+                   asp-route-page="@(Model.Paged.Page - 1)"
+                   asp-route-pageSize="@Model.Paged.PageSize">
+                    ‹ Önceki
+                </a>
+
+                <span class="pager_info">@Model.Paged.Page / @Model.Paged.TotalPages</span>
+
+                <a class="pager_btn @(Model.Paged.Page >= Model.Paged.TotalPages ? "disabled" : "")"
+                   asp-controller="Blog" asp-action="Index"
+                   asp-route-categoryId="@Model.CategoryId"
+                   asp-route-page="@(Model.Paged.Page + 1)"
+                   asp-route-pageSize="@Model.Paged.PageSize">
+                    Sonraki ›
+                </a>
+            </div>
+        }
+    </div>
+</section>
+
+<style>
+    /* Banner */
+    .blogs-banner-section {
+        background: transparent !important;
+        background-image: none !important;
+    }
+
+    .banner-section--gradient {
+        background: linear-gradient(180deg, #b30000 0%, #000000 100%) !important;
+        padding: 180px 0 100px 0;
+        position: relative;
+        text-align: center;
+        z-index: 1;
+    }
+
+        .banner-section--gradient::before,
+        .banner-section--gradient::after {
+            pointer-events: none !important;
+        }
+
+    .banner-section-content h1 {
+        color: #fff;
+        font-weight: 900;
+        margin-bottom: 14px;
+        font-size: clamp(28px, 3vw, 44px);
+        line-height: 1.1;
+    }
+
+    .banner-section-content .btn_wrapper {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.22);
+        background: rgba(0,0,0,.18);
+        backdrop-filter: blur(6px);
+    }
+
+    .sub_home_span {
+        color: rgba(255,255,255,.85);
+    }
+
+    .sub_span {
+        color: #fff;
+        font-weight: 800;
+    }
+
+    /* ✅ Page (White) */
+    .blogs_section {
+        padding: 70px 0;
+        background: #ffffff;
+    }
+
+    /* ✅ Category Bar (White) */
+    .category_bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 14px;
+        border-radius: 16px;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 10px 30px rgba(0,0,0,.06);
+        position: sticky;
+        top: 84px; /* menü yüksekliğine göre ayarlayabilirsin */
+        z-index: 2;
+    }
+
+    .cat_btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 14px;
+        border-radius: 999px;
+        color: #111827;
+        border: 1px solid #e5e7eb;
+        background: #f9fafb;
+        font-weight: 800;
+        font-size: 13px;
+        transition: .18s ease;
+        text-decoration: none !important;
+    }
+
+        .cat_btn:hover {
+            transform: translateY(-1px);
+            background: #f3f4f6;
+            border-color: #d1d5db;
+        }
+
+        .cat_btn.active {
+            background: rgba(179,0,0,.10);
+            border-color: rgba(179,0,0,.30);
+            color: #b30000;
+        }
+
+
+    .blog_card {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 18px;
+        overflow: hidden;
+        height: 100%;
+        box-shadow: 0 10px 30px rgba(0,0,0,.08);
+        transition: .18s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .blog_card:hover {
+            transform: translateY(-4px);
+            border-color: #d1d5db;
+            box-shadow: 0 18px 55px rgba(0,0,0,.12);
+        }
+
+    .blog_img {
+        width: 100%;
+        aspect-ratio: 16/10;
+        overflow: hidden;
+        background: #f3f4f6;
+    }
+
+        .blog_img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: scale(1.02);
+            transition: .25s ease;
+        }
+
+    .blog_card:hover .blog_img img {
+        transform: scale(1.06);
+    }
+
+    .blog_body {
+        padding: 16px;
+        color: #111827;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex: 1;
+    }
+
+    .blog_meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .chip {
+        display: inline-flex;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(179,0,0,.10);
+        border: 1px solid rgba(179,0,0,.22);
+        color: #b30000;
+        font-size: 12px;
+        font-weight: 900;
+        white-space: nowrap;
+    }
+
+    .date {
+        color: #6b7280;
+        font-size: 12px;
+        font-weight: 800;
+        white-space: nowrap;
+    }
+
+    .blog_title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 950;
+        line-height: 1.25;
+        color: #111827;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 46px;
+    }
+
+    .blog_desc {
+        margin: 0;
+        color: #4b5563;
+        font-size: 14px;
+        line-height: 1.65;
+        min-height: 52px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .read_more {
+        margin-top: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        background: #f9fafb;
+        color: #111827;
+        font-weight: 900;
+        font-size: 13px;
+        text-decoration: none !important;
+        transition: .18s ease;
+        width: fit-content;
+    }
+
+        .read_more:hover {
+            background: #f3f4f6;
+            border-color: #d1d5db;
+            transform: translateY(-1px);
+        }
+
+
+    .empty_state {
+        margin-top: 18px;
+        padding: 18px;
+        border-radius: 16px;
+        border: 1px dashed #d1d5db;
+        background: #f9fafb;
+        color: #6b7280;
+        text-align: center;
+        font-weight: 700;
+    }
+
+
+    .pager {
+        margin-top: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .pager_btn {
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid #e5e7eb;
+        background: #ffffff;
+        color: #111827;
+        text-decoration: none !important;
+        font-weight: 900;
+        box-shadow: 0 10px 30px rgba(0,0,0,.06);
+        transition: .15s ease;
+    }
+
+        .pager_btn:hover {
+            background: #f9fafb;
+            transform: translateY(-1px);
+        }
+
+        .pager_btn.disabled {
+            opacity: .45;
+            pointer-events: none;
+            box-shadow: none;
+        }
+
+    .pager_info {
+        color: #6b7280;
+        font-weight: 900;
+    }
+
+
+    .badge.badge-light {
+        border: 1px solid rgba(255,255,255,.22);
+        background: rgba(255,255,255,.12) !important;
+        color: #fff !important;
+        font-weight: 900;
+    }
+</style>
+

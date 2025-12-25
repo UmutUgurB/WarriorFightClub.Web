@@ -1,0 +1,85 @@
+﻿@using WarriorFightClub.WebUI.ApiDtos
+@model IReadOnlyList<PackagesDto>
+
+<section class="pricing_tables_section">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="pricing_tables_content">
+                    <h5>PAKETLER</h5>
+                    <h2>Size uygun paketi seçin</h2>
+                </div>
+            </div>
+        </div>
+
+        @if (Model is null || Model.Count == 0)
+        {
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <p>Şu anda görüntülenecek paket bulunamadı.</p>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row" data-aos="fade-up">
+                @foreach (var p in Model)
+                {
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-4">
+                        <div class="pricing_tables_box_content">
+                            <div class="pricing_tables_box_upper_portion">
+                                <figure class="mb-0">
+                                    <img src="@p.ImageUrl" alt="@p.Title" class="img-fluid">
+                                </figure>
+
+                                <!-- Fiyat alanın yoksa bunu kaldır ya da sabit yaz -->
+                                <div class="pricing_tables_box_image_content">
+                                    <span class="price">@p.Title</span>
+                                    <span class="month">Paket</span>
+                                </div>
+                            </div>
+
+                            <div class="pricing_tables_box_lower_portion">
+                                <h5>@p.Title</h5>
+
+                                @{
+                                    // Features string’i "a;b;c" gibi tutuyorsan parçalayalım:
+                                    var features = (p.Features ?? "")
+                                    .Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                                }
+
+                                <ul class="list-unstyled">
+                                    @if (features.Length == 0)
+                                    {
+                                        <li>
+                                            <i class="fa-solid fa-check" aria-hidden="true"></i>
+                                            @p.Description
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        foreach (var f in features)
+                                        {
+                                            <li>
+                                                <i class="fa-solid fa-check" aria-hidden="true"></i>@f
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+
+                                <div class="btn_wrapper">
+                                    <a class="join_now_btn text-decoration-none" href="~/pricing">
+                                        Detayları Gör
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+
+    </div>
+</section>
