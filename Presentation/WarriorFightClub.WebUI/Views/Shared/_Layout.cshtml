@@ -1,49 +1,446 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WarriorFightClub.WebUI</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WarriorFightClub.WebUI.styles.css" asp-append-version="true" />
+    <title>Home | Xtreme Fitness</title>
+    <!-- /SEO Ultimate -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon" sizes="57x57" href="./assets/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./assets/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./assets/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./assets/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./assets/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./assets/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./assets/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="~/warrior-fight-club/xtreme-fitness-placeholder/image/png" sizes="192x192" href="~/warrior-fight-club/xtreme-fitness-placeholder/./assets/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="~/warrior-fight-club/xtreme-fitness-placeholder/image/png" sizes="32x32" href="~/warrior-fight-club/xtreme-fitness-placeholder/./assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="~/warrior-fight-club/xtreme-fitness-placeholder/image/png" sizes="96x96" href="~/warrior-fight-club/xtreme-fitness-placeholder/./assets/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="~/warrior-fight-club/xtreme-fitness-placeholder/image/png" sizes="16x16" href="~/warrior-fight-club/xtreme-fitness-placeholder/./assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="~/warrior-fight-club/xtreme-fitness-placeholder/./assets/images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Latest compiled and minified CSS -->
+    <link href="~/warrior-fight-club/xtreme-fitness-placeholder/assets/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/warrior-fight-club/xtreme-fitness-placeholder/./assets/js/bootstrap.min.js">
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- StyleSheet link CSS -->
+    <link href="~/warrior-fight-club/xtreme-fitness-placeholder/assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="~/warrior-fight-club/xtreme-fitness-placeholder/assets/css/mediaqueries.css" rel="stylesheet" type="text/css">
+    <link href="~/warrior-fight-club/xtreme-fitness-placeholder/assets/css/owl.carousel.min.css" rel="stylesheet" type="text/css">
+    <link href="~/warrior-fight-club/xtreme-fitness-placeholder/assets/css/owl.theme.default.min.css" rel="stylesheet" type="text/css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+    <style>
+        /* Menü kapsayıcısını banner'ın üzerine bindirir */
+        .banner-section-outer {
+            position: absolute; /* Sayfa akışından çıkarır */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999; /* Banner görselinin üzerinde kalmasını sağlar */
+            background: transparent !important;
+        }
+
+        header {
+            background: transparent !important;
+        }
+
+        /* Navigasyon linklerinin beyaz ve okunabilir olduğundan emin olalım */
+        .navbar-nav .nav-link {
+            color: #ffffff !important;
+            font-weight: 500;
+        }
+
+        /* Eğer logo çok büyük gelirse sınırlayalım */
+        .navbar-brand img {
+            max-height: 50px;
+        }
+    </style>
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WarriorFightClub.WebUI</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+    <div class="banner-section-outer" style="background: transparent !important; background-image: none !important;">
+        <header style="background: transparent !important;">
+        <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+                <a class="navbar-brand" href="./index.html"><figure class="mb-0"><img src="./assets/images/xtreme_fitness_logo.png" alt="" class="img-fluid"></figure></a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" href="./about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./services.html">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./trainers.html">Trainers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./pricing.html">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./coming_soon.html">Coming Soon</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link contact_btn" href="./contact.html">Contact</a>
                         </li>
                     </ul>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - WarriorFightClub.WebUI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </nav>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    </header>
+
+
+
+</div>
+@RenderBody()
+<!-- FOOTER SECTION -->
+<section class="footer-section">
+    <div class="container">
+        <div class="middle-portion">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="about_col">
+                        <a href="./index.html">
+                            <figure>
+                                <img src="./assets/images/footer_logo.png" alt="" class="img-fluid">
+                            </figure>
+                        </a>
+                        <p>Fuisruam est aui dolorem ipsum ruia dolor sit amet...</p>
+                        <ul class="list-unstyled">
+                            <li class="icons"><a href="#"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                            <li class="icons"><a href="#"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a></li>
+                            <li class="icons"><a href="#"><i class="fa-brands fa-instagram mr-0" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 d-lg-block d-none">
+                    <div class="hours_col">
+                        <h6>OPENING HOURS</h6>
+                        <ul class="list-unstyled">
+                            <li>
+                                <p>Monday – Saturday</p>
+                            </li>
+                            <li>
+                                <span>12.00 – 14.45</span>
+                            </li>
+                            <li>
+                                <p>Sunday – Thursday</p>
+                            </li>
+                            <li>
+                                <span>17.30 – 00.00</span>
+                            </li>
+                            <li>
+                                <p>Friday – Saturday</p>
+                            </li>
+                            <li>
+                                <span>17.30 – 00.00</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 d-md-block d-none">
+                    <div class="links_col">
+                        <h6>QUICK LINKS</h6>
+                        <ul class="list-unstyled">
+                            <li>
+                                <i class="fa-solid fa-caret-right"></i>
+                                <a href="./about.html">About</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-caret-right"></i>
+                                <a href="./services.html">Services</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-caret-right"></i>
+                                <a href="./trainers.html">Trainers</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-caret-right"></i>
+                                <a href="./pricing.html">Pricing</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-caret-right"></i>
+                                <a href="./contact.html">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="contact_col">
+                        <h6>CONTACT US</h6>
+                        <ul class="list-unstyled">
+                            <li>
+                                <p>Address:</p>
+                            </li>
+                            <li>
+                                <span>121 King Street Melbourne, 3000, Australia</span>
+                            </li>
+                            <li>
+                                <p>Email:</p>
+                            </li>
+                            <li class="mail">
+                                <a href="mailto:Info@xtremefitness.com" class="text-decoration-none">Info@xtremefitness.com</a>
+                            </li>
+                            <li>
+                                <p>Phone:</p>
+                            </li>
+                            <li class="mb-0">
+                                <a href="tel:+61383766284" class="text-decoration-none">+61 3 8376 6284</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-portion">
+        <div class="copyright col-xl-12"> 
+            <p>Copyright 2022 xtremefitness.com All Rights Reserved.</p>
+        </div>
+    </div>
+    <figure class="mb-0 footer_left_icon left_icon">
+        <img src="./assets/images/footer_left_icon.png" alt="" class="img-fluid">
+    </figure>
+    <figure class="mb-0 footer_right_icon right_icon">
+        <img src="./assets/images/footer_right_icon.png" alt="" class="img-fluid">
+    </figure>
+</section>
+<!-- BLOG SECTION POPUP -->
+<div id="blog-model-1" class="modal fade blog-model-con" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+       <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" ><i class="fa-solid fa-x"></i></span></button>
+            </div>
+            <div class="modal-body">
+                <div class="blog-box-item mb-0">
+                    <div class="blog-img">
+                        <figure class="mb-0">
+                            <img src="./assets/images/our_news_1.png" alt="blog-img" class="img-fluid">
+                        </figure>
+                    </div>
+                    <div class="blog-content pl-0 pr-0">
+                        <div class="blog-auteher-title">
+                            <span>By Elina Parker</span>
+                            <span class="float-lg-right">Oct 13, 2022</span>
+                        </div>
+                        <div class="social_icons">
+                            <ul class="list-unstyled">
+                                <li><a href="#"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-instagram mr-0" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <h5>QUIS AUTEM VEA EUM IURE REPREHENDERIT</h5>
+                        <p>
+                            Duis aute irure dolor in reprehenderi in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            in reprehenderit in voluptateesse occaecat cuida at non proident, sunt in culpa qui officia deserun.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tempor eros a tellus auctor, nec suscipit nunc dignissim. Ut suscipit gravida augue sed elementum. Sed sed luctus nisl. Donec scelerisque nisi in sodales mattis. Vestibulum suscipit odio ac enim blandit sollicitudin. Aliquam ultrices sem quis urna placerat interdum. Etiam rutrum, quam sagittis tristique mollis, libero arcu scelerisque erat, eget tincidunt eros diam quis nunc.
+                        </p>
+                        <h5 class="contact">CONTACT US</h5>
+                        <h2>SEND US A MESSAGE & JOIN OUR TEAM</h2>
+                        <form class="contact-form blog-model-form">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group mb-0">    
+                                        <input type="text" name="name" id="fname" class="form-placeholder-color" placeholder="Name"> 
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group mb-0">
+                                        <input type="tel" name="phone" id="phonenumber" class="form-placeholder-color form_style" placeholder="Phone">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group mb-0">    
+                                        <input type="email" name="email" id="emailaddress" class="form-placeholder-color" placeholder="Email"> 
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group mb-0">    
+                                        <input type="text" name="sub" id="subject" class="form-placeholder-color form_style" placeholder="Subject"> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class=" form-group mb-0">    
+                                        <textarea rows="3" name="msg" id="message" class="form-placeholder-color" placeholder="Message"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" name="btnsubmit" id="sendbtn">Send now<i class="fa-solid fa-play"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+       </div>
+    </div>
+</div>
+<div id="blog-model-2" class="modal fade blog-model-con" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+       <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" ><i class="fa-solid fa-x"></i></span></button>
+            </div>
+            <div class="modal-body">
+                <div class="blog-box-item mb-0">
+                    <div class="blog-img">
+                        <figure class="mb-0">
+                            <img src="./assets/images/our_news_2.png" alt="blog-img" class="img-fluid">
+                        </figure>
+                    </div>
+                    <div class="blog-content pl-0 pr-0">
+                        <div class="blog-auteher-title">
+                            <span>By Elina Parker</span>
+                            <span class="float-lg-right">Oct 13, 2022</span>
+                        </div>
+                        <div class="social_icons">
+                            <ul class="list-unstyled">
+                                <li><a href="#"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-instagram mr-0" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <h5>REPREHENDERIT IN VOUTA VELIT ESSE CILLUM</h5>
+                        <p>
+                            Duis aute irure dolor in reprehenderi in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            in reprehenderit in voluptateesse occaecat cuida at non proident, sunt in culpa qui officia deserun.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tempor eros a tellus auctor, nec suscipit nunc dignissim. Ut suscipit gravida augue sed elementum. Sed sed luctus nisl. Donec scelerisque nisi in sodales mattis. Vestibulum suscipit odio ac enim blandit sollicitudin. Aliquam ultrices sem quis urna placerat interdum. Etiam rutrum, quam sagittis tristique mollis, libero arcu scelerisque erat, eget tincidunt eros diam quis nunc.
+                        </p>
+                        <h5 class="contact">CONTACT US</h5>
+                        <h2>SEND US A MESSAGE & JOIN OUR TEAM</h2>
+                        <form class="contact-form blog-model-form">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group mb-0">    
+                                       <input type="text" name="name" id="blog_sec_fname" class="form-placeholder-color" placeholder="Name"> 
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group mb-0">
+                                        <input type="tel" name="phone" id="blog_sec_phonenumber" class="form-placeholder-color form_style" placeholder="Phone">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group mb-0">    
+                                        <input type="email" name="email" id="blog_sec_emailaddress" class="form-placeholder-color" placeholder="Email"> 
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group mb-0">    
+                                        <input type="text" name="sub" id="blog_sec_subject" class="form-placeholder-color form_style" placeholder="Subject"> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class=" form-group mb-0">    
+                                        <textarea rows="3" name="msg" id="blog_sec_message" class="form-placeholder-color" placeholder="Message"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" name="btnsubmit" id="blog_sec_sendbtn">Send now<i class="fa-solid fa-play"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+       </div>
+    </div>
+</div>
+<div id="blog-model-3" class="modal fade blog-model-con" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+       <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" ><i class="fa-solid fa-x"></i></span></button>
+            </div>
+            <div class="modal-body">
+                <div class="blog-box-item mb-0">
+                    <div class="blog-img">
+                        <figure class="mb-0">
+                            <img src="./assets/images/our_news_3.png" alt="blog-img" class="img-fluid">
+                        </figure>
+                    </div>
+                    <div class="blog-content pl-0 pr-0">
+                        <div class="blog-auteher-title">
+                            <span>By Elina Parker</span>
+                            <span class="float-lg-right">Oct 13, 2022</span>
+                        </div>
+                        <div class="social_icons">
+                            <ul class="list-unstyled">
+                                <li><a href="#"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-instagram mr-0" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <h5>SOLUTA NOBIS OSE ALIGEN OPTIO CUMUE</h5>
+                        <p>
+                            Duis aute irure dolor in reprehenderi in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            in reprehenderit in voluptateesse occaecat cuida at non proident, sunt in culpa qui officia deserun.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tempor eros a tellus auctor, nec suscipit nunc dignissim. Ut suscipit gravida augue sed elementum. Sed sed luctus nisl. Donec scelerisque nisi in sodales mattis. Vestibulum suscipit odio ac enim blandit sollicitudin. Aliquam ultrices sem quis urna placerat interdum. Etiam rutrum, quam sagittis tristique mollis, libero arcu scelerisque erat, eget tincidunt eros diam quis nunc.
+                        </p>
+                        <h5 class="contact">CONTACT US</h5>
+                        <h2>SEND US A MESSAGE & JOIN OUR TEAM</h2>
+                        <form class="contact-form blog-model-form">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group mb-0">    
+                                        <input type="text" name="name" id="blog_third_fname" class="form-placeholder-color" placeholder="Name"> 
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group mb-0">
+                                        <input type="tel" name="phone" id="blog_third_phonenumber" class="form-placeholder-color form_style" placeholder="Phone">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group mb-0">    
+                                        <input type="email" name="email" id="blog_third_emailaddress" class="form-placeholder-color" placeholder="Email"> 
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group mb-0">    
+                                        <input type="text" name="sub" id="blog_third_subject" class="form-placeholder-color form_style" placeholder="Subject"> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class=" form-group mb-0">    
+                                        <textarea rows="3" name="msg" id="blog_third_message" class="form-placeholder-color" placeholder="Message"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" name="btnsubmit" id="blog_third_sendbtn">Send now<i class="fa-solid fa-play"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+       </div>
+    </div>
+</div>
+<!-- Latest compiled JavaScript -->
+    <script src="~/warrior-fight-club/xtreme-fitness-placeholder/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="~/warrior-fight-club/xtreme-fitness-placeholder/assets/js/popper.min.js"></script>
+    <script src="~/warrior-fight-club/xtreme-fitness-placeholder/assets/js/video-popup.js"></script>
+    <script src="~/warrior-fight-club/xtreme-fitness-placeholder/assets/js/bootstrap.min.js"></script>
+    <script src="~/warrior-fight-club/xtreme-fitness-placeholder/assets/js/custom.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="~/warrior-fight-club/xtreme-fitness-placeholder/assets/js/owl.carousel.js"></script>
+    <script src="~/warrior-fight-club/xtreme-fitness-placeholder/assets/js/carousel.js"></script>
+    <script src="~/warrior-fight-club/xtreme-fitness-placeholder/assets/js/video-section.js"></script>
+    <script src="~/warrior-fight-club/xtreme-fitness-placeholder/assets/js/counter.js"></script>
+    <script src="~/warrior-fight-club/xtreme-fitness-placeholder/assets/js/animation.js"></script>
 </body>
 </html>

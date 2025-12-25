@@ -103,6 +103,38 @@ namespace WarriorFightClub.Persistence.Migrations
                     b.HasIndex("IsActive");
 
                     b.ToTable("Banners", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("11111111-1111-1111-1111-111111111111"),
+                            Button = "Hemen Katıl",
+                            CreatedDate = new DateTime(2023, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUrl = "https://olimpiaspormerkezi.com/spor-salonuna-gitmenin-faydalari/",
+                            IsActive = true,
+                            SubTitle = "Profesyonel eğitmenlerle gücünü keşfet.",
+                            Title = "Sınırlarını Zorla"
+                        },
+                        new
+                        {
+                            Id = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Button = "Dersleri İncele",
+                            CreatedDate = new DateTime(2023, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoOY1IODlwhJS68nmqU56bDek_SqxElruCwQ&s",
+                            IsActive = true,
+                            SubTitle = "Warrior Fight Club ile disiplin ve teknik bir arada.",
+                            Title = "Dövüş Sanatlarında Ustalık"
+                        },
+                        new
+                        {
+                            Id = new Guid("33333333-3333-3333-3333-333333333333"),
+                            Button = "Üye Ol",
+                            CreatedDate = new DateTime(2023, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUrl = "https://img.freepik.com/free-photo/strong-man-training-gym_1303-23478.jpg?semt=ais_hybrid&w=740&q=80",
+                            IsActive = true,
+                            SubTitle = "En modern ekipmanlarla antrenman yapmaya başla.",
+                            Title = "Şampiyonların Tercihi"
+                        });
                 });
 
             modelBuilder.Entity("WarriorFightClub.Domain.Entities.Blog", b =>
@@ -123,20 +155,24 @@ namespace WarriorFightClub.Persistence.Migrations
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Blogs");
+                    b.HasIndex("Status");
+
+                    b.ToTable("Blogs", (string)null);
                 });
 
             modelBuilder.Entity("WarriorFightClub.Domain.Entities.Category", b =>
@@ -154,11 +190,14 @@ namespace WarriorFightClub.Persistence.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.HasIndex("Title");
+
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("WarriorFightClub.Domain.Entities.Contact", b =>
@@ -217,11 +256,13 @@ namespace WarriorFightClub.Persistence.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Packages");
+                    b.HasIndex("Title");
+
+                    b.ToTable("Packages", (string)null);
                 });
 
             modelBuilder.Entity("WarriorFightClub.Domain.Entities.Service", b =>
@@ -239,18 +280,26 @@ namespace WarriorFightClub.Persistence.Migrations
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Services");
+                    b.HasIndex("CreatedDate");
+
+                    b.HasIndex("IsActive");
+
+                    b.ToTable("Services", (string)null);
                 });
 
             modelBuilder.Entity("WarriorFightClub.Domain.Entities.Testimonial", b =>
@@ -267,15 +316,48 @@ namespace WarriorFightClub.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsShown")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Testimonials");
+                    b.HasIndex("CreatedDate");
+
+                    b.HasIndex("IsShown");
+
+                    b.ToTable("Testimonials", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("11111111-1111-1111-1111-111111111111"),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Antrenörler çok ilgili, ortam tertemiz. Kısa sürede farkı gördüm.",
+                            IsShown = true,
+                            Title = "Harika bir salon!"
+                        },
+                        new
+                        {
+                            Id = new Guid("22222222-2222-2222-2222-222222222222"),
+                            CreatedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Programlar net, hedef odaklı. Motivasyonum çok arttı.",
+                            IsShown = true,
+                            Title = "Disiplin ve motivasyon"
+                        },
+                        new
+                        {
+                            Id = new Guid("33333333-3333-3333-3333-333333333333"),
+                            CreatedDate = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "İlk kez başladım, her adımda destek oldular. Kesinlikle tavsiye ederim.",
+                            IsShown = false,
+                            Title = "Yeni başlayanlar için ideal"
+                        });
                 });
 
             modelBuilder.Entity("WarriorFightClub.Domain.Entities.Trainer", b =>
@@ -284,7 +366,7 @@ namespace WarriorFightClub.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateOnly?>("BirthDate")
+                    b.Property<DateTime?>("BirthDate")
                         .HasColumnType("date");
 
                     b.Property<DateTime>("CreatedDate")
@@ -296,22 +378,31 @@ namespace WarriorFightClub.Persistence.Migrations
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Surname")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Trainers");
+                    b.HasIndex("CreatedDate");
+
+                    b.HasIndex("IsActive");
+
+                    b.ToTable("Trainers", (string)null);
                 });
 
             modelBuilder.Entity("WarriorFightClub.Domain.Entities.Blog", b =>
@@ -319,7 +410,7 @@ namespace WarriorFightClub.Persistence.Migrations
                     b.HasOne("WarriorFightClub.Domain.Entities.Category", "Category")
                         .WithMany("Blogs")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Category");

@@ -13,8 +13,7 @@ namespace WarriorFightClub.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            services.AddMediatR(cfg =>
-                cfg.RegisterServicesFromAssembly(typeof(ApplicationServiceRegistration).Assembly));
+            services.AddMediatR(typeof(ApplicationServiceRegistration).Assembly);
 
             services.AddAutoMapper(typeof(ApplicationServiceRegistration).Assembly);
 

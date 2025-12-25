@@ -1,0 +1,24 @@
+﻿@using WarriorFightClub.WebUI.ApiDtos
+@model IReadOnlyList<ServiceDto>
+
+<section class="service-section">
+    <div class="container">
+        <div class="row">
+            @foreach (var s in Model)
+            {
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="service-box">
+                        <figure class="mb-0">
+                            <img src="@s.ImageUrl" class="img-fluid" alt="">
+                        </figure>
+                        <div class="service-content">
+                            <h4>@s.Title</h4>
+                            <p>@s.Description</p>
+                            <a href="~/services">Devamını Gör</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

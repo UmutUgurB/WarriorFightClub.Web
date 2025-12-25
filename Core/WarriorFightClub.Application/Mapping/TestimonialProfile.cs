@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using WarriorFightClub.Application.Features.Testimonials.Commands.CreateTestimonial;
+using WarriorFightClub.Application.Features.Testimonials.Commands.UpdateTestimonial;
 using WarriorFightClub.Application.Features.Testimonials.Dtos;
 using WarriorFightClub.Domain.Entities;
 

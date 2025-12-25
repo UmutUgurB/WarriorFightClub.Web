@@ -1,0 +1,121 @@
+﻿@using WarriorFightClub.WebUI.ViewModels
+@model BannerSectionVm
+
+<style>
+    .hero-slider .carousel-item {
+        height: 100vh;
+        min-height: 600px;
+        background-color: #111;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+    }
+
+        .hero-slider .carousel-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%);
+            z-index: 1;
+        }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        color: #fff;
+        padding-top: 15%;
+    }
+
+        .hero-content h3 {
+            color: #ff0000; /* Warrior Red */
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+
+        .hero-content .accent-line {
+            width: 80px;
+            height: 4px;
+            background: #ff0000;
+            margin-bottom: 30px;
+        }
+
+    .btn-warrior {
+        background: #ff0000;
+        color: #fff;
+        padding: 15px 35px;
+        font-weight: 700;
+        text-transform: uppercase;
+        border-radius: 0;
+        transition: 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+        .btn-warrior:hover {
+            background: #fff;
+            color: #ff0000;
+            transform: translateY(-5px);
+        }
+</style>
+
+<section class="hero-slider">
+    <div id="warriorBanner" class="carousel slide carousel-fade" data-ride="carousel">
+
+        <ol class="carousel-indicators" style="justify-content: flex-start; margin-left: 10%; bottom: 50px;">
+            @for (var i = 0; i < Model.Items.Count; i++)
+            {
+                <li data-target="#warriorBanner" data-slide-to="@i" class="@(i == 0 ? "active" : "")"
+                    style="width: 50px; height: 5px;"></li>
+            }
+        </ol>
+
+        <div class="carousel-inner">
+            @for (var i = 0; i < Model.Items.Count; i++)
+            {
+                var b = Model.Items[i];
+                <div class="carousel-item @(i == 0 ? "active" : "")" style="background-image: url('@b.ImageUrl');">
+                    <div class="container h-100">
+                        <div class="row h-100 align-items-center">
+                            <div class="col-lg-8 hero-content">
+                                <h3 data-aos="fade-down" data-aos-delay="100">@b.Title</h3>
+                                <div class="accent-line" data-aos="zoom-in" data-aos-delay="200"></div>
+                                <h1 data-aos="fade-right" data-aos-delay="300">@b.SubTitle</h1>
+                                <p class="lead mb-5" data-aos="fade-up" data-aos-delay="400" style="font-size: 1.2rem; opacity: 0.9;">
+                                    Sınırlarını zorla, potansiyelini keşfet. Warrior Fight Club ile profesyonel eğitime bugün başla.
+                                </p>
+                                <div data-aos="fade-up" data-aos-delay="500">
+                                    <a href="/about#video" class="btn btn-warrior text-decoration-none">
+                                        <span>@b.Button</span>
+                                        <i class="fas fa-bolt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <a class="carousel-control-prev" href="#warriorBanner" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#warriorBanner" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+    </div>
+</section>

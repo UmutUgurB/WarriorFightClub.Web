@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WarriorFightClub.Application.Common.Paging;
-using WarriorFightClub.Application.Features.Banners.Dtos;
 using WarriorFightClub.Application.Repositories.Banners;
 using WarriorFightClub.Domain.Entities;
 using WarriorFightClub.Persistence.Contexts;

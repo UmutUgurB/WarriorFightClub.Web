@@ -1,6 +1,11 @@
-﻿namespace WarriorFightClub.Application.Features.Testimonials.Commands.UpdateTestimonial
+﻿using MediatR;
+
+namespace WarriorFightClub.Application.Features.Testimonials.Commands.UpdateTestimonial
 {
-    public class UpdateTestimonialCommand
-    {
-    }
+    public sealed record UpdateTestimonialCommand(
+    Guid Id,
+    string Title,
+    string Description,
+    bool IsShown
+) : IRequest<bool>;
 }
